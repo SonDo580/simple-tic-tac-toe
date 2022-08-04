@@ -27,7 +27,7 @@ const gameBoard = (() => {
         }
     };
 
-    return {board, renderBoard};
+    return {renderBoard};
 })();
 
 const player = (name, mark) => {
