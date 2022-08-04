@@ -30,6 +30,16 @@ const gameBoard = (() => {
     return {board, renderBoard};
 })();
 
+const player = (name, mark) => {
+    const getName = () => name;
+    const getMark = () => mark;
+
+    return {getName, getMark};
+};
+
+
+
+
 gameBoard.renderBoard();
 
 console.log(gameBoard.board);
