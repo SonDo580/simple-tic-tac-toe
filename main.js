@@ -17,6 +17,11 @@ const gameBoard = (() => {
                 const cell = document.createElement('div');
                 cell.textContent = board[i][j];
                 cell.classList.add('cell');
+                if (board[i][j] === 'X') {
+                    cell.style.color = 'red';
+                } else {
+                    cell.style.color = 'blue';
+                }
                 gameBoardDiv.appendChild(cell);
             }
         }
