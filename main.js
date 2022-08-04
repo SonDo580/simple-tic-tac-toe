@@ -1,5 +1,6 @@
 const gameBoard = (() => {
     const SIDE = 10;    // the number of squares per side of the board
+    
     const board = [];
     for (let i = 0; i < SIDE; i++) {
         const row = [];
@@ -17,11 +18,15 @@ const gameBoard = (() => {
                 const cell = document.createElement('div');
                 cell.textContent = board[i][j];
                 cell.classList.add('cell');
+
                 if (board[i][j] === 'X') {
                     cell.style.color = 'red';
                 } else {
                     cell.style.color = 'blue';
                 }
+
+                cell.addEventListener('click', addMark);
+
                 gameBoardDiv.appendChild(cell);
             }
         }
