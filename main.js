@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-    const SIDE = 20;    // the number of squares per side of the board
+    const SIDE = 10;    // the number of squares per side of the board
     const board = [];
     for (let i = 0; i < SIDE; i++) {
         const row = [];
@@ -9,17 +9,18 @@ const gameBoard = (() => {
         board.push(row);
     }
 
-    // const renderBoard = () => {
-    //     const gameBoardDiv = document.querySelector('#gameBoard');
+    const renderBoard = () => {
+        const gameBoardDiv = document.querySelector('#gameBoard');
 
-    //     for (let mark of board) {
-    //         const cell = document.createElement('div');
-    //         cell.textContent = mark;
+        for (let i = 0; i < SIDE; i++) {
+            for (let j = 0; j < SIDE; j++) {
+                const cell = document.createElement('div');
+                gameBoardDiv.appendChild(cell);
+            }
+        }
+    };
 
-    //     }
-    // }
-
-    return {board};
+    return {board, renderBoard};
 })();
 
 console.log(gameBoard.board);
