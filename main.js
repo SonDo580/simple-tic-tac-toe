@@ -51,7 +51,12 @@ const player2 = player('Sonic', 'O');
 
 let player1Turn = true;
 
-// function addMark(event) {
-//     const cell = event.target;
-//     cell.textContent = player1.getMark();
-// }
+function addMark(event) {
+    const cell = event.target;
+    if (player1Turn) {
+        cell.textContent = player1.getMark();
+    } else {
+        cell.textContent = player2.getMark();
+    }
+    player1Turn = !player1Turn;
+}
