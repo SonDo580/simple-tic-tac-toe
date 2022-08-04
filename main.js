@@ -49,14 +49,16 @@ const player1 = player('Shadow', 'X');
 const player2 = player('Sonic', 'O');
 
 
-let player1Turn = true;
+let player1Turn = true; // Shadow will go first
 
 function addMark(event) {
     const cell = event.target;
     if (player1Turn) {
         cell.textContent = player1.getMark();
+        cell.style.color = 'red';
     } else {
         cell.textContent = player2.getMark();
+        cell.style.color = 'blue';
     }
     player1Turn = !player1Turn;
 }
