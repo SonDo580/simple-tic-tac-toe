@@ -2,9 +2,11 @@ const gameBoard = (() => {
     const SIDE = 20;    // the number of squares per side of the board
     const board = [];
     for (let i = 0; i < SIDE; i++) {
+        const row = [];
         for (let j = 0; j < SIDE; j++) {
-            board.push('');
+            row.push('');
         }
+        board.push(row);
     }
 
     // const renderBoard = () => {
