@@ -1,10 +1,21 @@
 const gameBoard = (() => {
+    const SIDE = 20;    // the number of squares per side of the board
     const board = [];
-    for (let i = 0; i < 20; i++) {
-        for (let j = 0; j < 20; j++) {
+    for (let i = 0; i < SIDE; i++) {
+        for (let j = 0; j < SIDE; j++) {
             board.push('');
         }
     }
+
+    // const renderBoard = () => {
+    //     const gameBoardDiv = document.querySelector('#gameBoard');
+
+    //     for (let mark of board) {
+    //         const cell = document.createElement('div');
+    //         cell.textContent = mark;
+
+    //     }
+    // }
 
     return {board};
 })();
