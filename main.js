@@ -64,6 +64,9 @@ let player1Turn = true; // Shadow will go first
 
 function addMark(event) {
     const cell = event.target;
+    if (cell.textContent !== '') {
+        return;
+    }
 
     if (player1Turn) {
         cell.textContent = player1.getMark();
