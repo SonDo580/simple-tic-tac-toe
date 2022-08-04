@@ -35,6 +35,9 @@ const gameBoard = (() => {
     return {renderBoard};
 })();
 
+gameBoard.renderBoard();
+
+
 const player = (name, mark) => {
     const getName = () => name;
     const getMark = () => mark;
@@ -46,4 +49,9 @@ const player1 = player('Shadow', 'X');
 const player2 = player('Sonic', 'O');
 
 
-gameBoard.renderBoard();
+let player1Turn = true;
+
+// function addMark(event) {
+//     const cell = event.target;
+//     cell.textContent = player1.getMark();
+// }
