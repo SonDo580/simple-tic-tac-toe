@@ -2,15 +2,19 @@
     --side: 10;
 }
 
-
+body h1 {
+    text-align: center;
+}
 
 #gameBoard {
     display: grid;
     grid-template-columns: repeat(var(--side), 1fr);
     grid-template-rows: repeat(var(--side), 1fr);
+
     width: 500px;
     height: 500px;
     border: 1px solid black;
+    margin: 0 auto;
 }
 
 .cell {
