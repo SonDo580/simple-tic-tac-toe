@@ -18,6 +18,9 @@ const gameBoard = (() => {
                 const cell = document.createElement('div');
                 cell.textContent = board[i][j];
                 cell.classList.add('cell');
+                
+                cell.setAttribute('data-row', i);
+                cell.setAttribute('data-column', j);
 
                 if (board[i][j] === 'X') {
                     cell.style.color = 'red';
