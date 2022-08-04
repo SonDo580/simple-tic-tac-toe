@@ -35,7 +35,15 @@ const gameBoard = (() => {
         }
     };
 
-    return {renderBoard};
+    const getCell = (row, column) => {
+        return board[row][column];
+    };
+
+    const setCell = (row, column, mark) => {
+        board[row][column] = mark;
+    }
+
+    return {renderBoard, getCell, setCell};
 })();
 
 gameBoard.renderBoard();
@@ -56,6 +64,7 @@ let player1Turn = true; // Shadow will go first
 
 function addMark(event) {
     const cell = event.target;
+
     if (player1Turn) {
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
