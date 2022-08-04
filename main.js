@@ -37,9 +37,8 @@ const player = (name, mark) => {
     return {getName, getMark};
 };
 
-
+const player1 = player('Shadow', 'X');
+const player2 = player('Sonic', 'O');
 
 
 gameBoard.renderBoard();
-
-console.log(gameBoard.board);
