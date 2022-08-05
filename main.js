@@ -102,9 +102,12 @@ function addMark(event) {
 }
 
 function checkAllDirections(row, column, board, mark) {
-    const markNumber = {};
-    markNumber.horizontal = checkHorizontal(...arguments);
-    markNumber.vertical = checkVertical(...arguments);
+    const markNumber = {
+        horizontal : checkHorizontal(...arguments),
+        vertical: checkVertical(...arguments),
+        northwest_southeast: checkNorthWest_SouthEast(...arguments),
+        northeast_southwest: checkNorthEast_SouthWest(...arguments)
+    };
 
     return markNumber;
 }
