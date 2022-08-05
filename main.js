@@ -72,7 +72,7 @@ playersDiv.appendChild(player2.renderPlayer());
 
 
 let player1Turn = true;     // player1 will go first
-let lastCell = '';       
+let lastCell = null;       
 
 function addMark(event) {
     const cell = event.target;
@@ -96,6 +96,11 @@ function addMark(event) {
     gameBoard.setCell(row, column, mark);
     cell.textContent = mark;
     cell.style.color = color;
+
+    if (lastCell !== null) {
+        lastCell.classList.remove('highlight');
+    }
+    cell.classList.add('highlight');
 
 
     console.log(checkAllDirections(row, column, gameBoard.getBoard(), mark));
