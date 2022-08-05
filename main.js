@@ -96,7 +96,7 @@ function addMark(event) {
 function isGameOver(row, column, board, mark) {
     let markNumber = 1;      
 
-    
+    return checkHorizontal();
 }
 
 function checkHorizontal(row, column, board, mark) {
@@ -116,7 +116,5 @@ function checkHorizontal(row, column, board, mark) {
         markNumber++;
     }
 
-    if(markNumber >= 5) {
-        return true;
-    }
+    return markNumber;
 }
