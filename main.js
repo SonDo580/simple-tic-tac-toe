@@ -111,6 +111,7 @@ function checkAllDirections(row, column, board, mark) {
 function checkHorizontal(row, column, board, mark) {
     let markNumber = 1;
     let currentColumn = column;
+
     while (--currentColumn >= 0) {
         if (board[row][currentColumn] !== mark) {
             break;
@@ -121,6 +122,28 @@ function checkHorizontal(row, column, board, mark) {
     currentColumn = column;
     while (++currentColumn < SIDE) {
         if (board[row][currentColumn] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    return markNumber;
+}
+
+function checkVertical(row, column, board, mark) {
+    let markNumber = 1;
+    let currentRow = row;
+
+    while (--currentRow >= 0) {
+        if (board[currentRow][column] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    currentRow = row;
+    while (++currentRow < SIDE) {
+        if (board[currentRow][column] !== mark) {
             break;
         }
         markNumber++;
