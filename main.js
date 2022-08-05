@@ -22,7 +22,7 @@ const gameBoard = (() => {
                 const cell = document.createElement('div');
                 cell.textContent = board[i][j];
                 cell.classList.add('cell');
-                
+
                 cell.setAttribute('data-row', i);
                 cell.setAttribute('data-column', j);
 
@@ -47,7 +47,7 @@ const gameBoard = (() => {
         board[row][column] = mark;
     }
 
-    return {getBoard, renderBoard, getCell, setCell};
+    return { getBoard, renderBoard, getCell, setCell };
 })();
 
 gameBoard.renderBoard();
@@ -57,7 +57,7 @@ const player = (name, mark) => {
     const getName = () => name;
     const getMark = () => mark;
 
-    return {getName, getMark};
+    return { getName, getMark };
 };
 
 const player1 = player('Shadow', 'X');
@@ -85,21 +85,12 @@ function addMark(event) {
         color = 'blue';
     }
 
-    if (player1Turn) {        
-        gameBoard.setCell(row, column, player1.getMark());
+    gameBoard.setCell(row, column, mark);
+    cell.textContent = mark;
+    cell.style.color = color;
 
-        cell.textContent = player1.getMark();
-        cell.style.color = 'red';
+    checkAllDirections(row, column, gameBoard.getBoard(), mark);
 
-        checkAllDirections(row, column, gameBoard.getBoard(), player1.getMark());
-    } else {
-        gameBoard.setCell(row, column, player2.getMark());
-
-        cell.textContent = player2.getMark();
-        cell.style.color = 'blue';
-
-        checkAllDirections(row, column, gameBoard.getBoard(), player2.getMark());
-    }
     player1Turn = !player1Turn;
 }
 
@@ -111,7 +102,7 @@ function checkAllDirections(row, column, board, mark) {
 }
 
 function checkHorizontal(row, column, board, mark) {
-    let markNumber = 1;     
+    let markNumber = 1;
     let currentColumn = column;
     while (--currentColumn >= 0) {
         if (board[row][currentColumn] !== mark) {
