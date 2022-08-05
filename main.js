@@ -75,8 +75,8 @@ function addMark(event) {
     const row = cell.getAttribute('data-row');
     const column = cell.getAttribute('data-column');
 
-    const mark = '';
-    const color = '';
+    let mark = '';
+    let color = '';
     if (player1Turn) {
         mark = player1.getMark();
         color = 'red';
