@@ -76,10 +76,13 @@ function addMark(event) {
     const column = cell.getAttribute('data-column');
 
     const mark = '';
+    const color = '';
     if (player1Turn) {
-        mark = player1.getMark()
+        mark = player1.getMark();
+        color = 'red';
     } else {
         mark = player2.getMark();
+        color = 'blue';
     }
 
     if (player1Turn) {        
