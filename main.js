@@ -53,11 +53,18 @@ const player = (name, mark) => {
     const getName = () => name;
     const getMark = () => mark;
 
-    return { getName, getMark };
+    const renderPlayer = () => {
+        const playerDiv = document.createElement('div');
+        playerDiv.textContent = `${name}: ${mark}`;
+    };
+
+    return { getName, getMark, renderPlayer };
 };
 
 const player1 = player('Shadow', 'X');
 const player2 = player('Sonic', 'O');
+
+// const playersDiv = document.querySelector('#players');
 
 
 let player1Turn = true; // Shadow will go first
