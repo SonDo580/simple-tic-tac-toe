@@ -71,7 +71,8 @@ playersDiv.appendChild(player1.renderPlayer());
 playersDiv.appendChild(player2.renderPlayer());
 
 
-let player1Turn = true; // Shadow will go first
+let player1Turn = true;     // player1 will go first
+let lastCell = '';       
 
 function addMark(event) {
     const cell = event.target;
@@ -96,10 +97,13 @@ function addMark(event) {
     cell.textContent = mark;
     cell.style.color = color;
 
+
     console.log(checkAllDirections(row, column, gameBoard.getBoard(), mark));
 
     player1Turn = !player1Turn;
 }
+
+
 
 function checkAllDirections(row, column, board, mark) {
     const markNumber = {
