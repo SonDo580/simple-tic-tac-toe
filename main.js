@@ -94,12 +94,17 @@ function addMark(event) {
 }
 
 function isGameOver(row, column, board, mark) {
-    let markNumber = 1;      
+    // return checkHorizontal(row, column, board, mark);
+}
 
-    return checkHorizontal();
+function checkAll(row, column, board, mark) {
+    if (checkHorizontal(row, column, board, mark) >= 5) {
+        return 'Game Over!';
+    }
 }
 
 function checkHorizontal(row, column, board, mark) {
+    let markNumber = 1;     
     let currentColumn = column;
     while (--currentColumn >= 0) {
         if (board[row][currentColumn] !== mark) {
