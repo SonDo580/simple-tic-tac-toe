@@ -100,6 +100,7 @@ function addMark(event) {
 
     console.log(checkAllDirections(row, column, gameBoard.getBoard(), mark));
 
+    lastCell = cell;
     player1Turn = !player1Turn;
 }
 
