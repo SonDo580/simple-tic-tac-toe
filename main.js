@@ -103,8 +103,8 @@ function addMark(event) {
 
 function checkAllDirections(row, column, board, mark) {
     const markNumber = {};
-    markNumber.horizontal = checkHorizontal(row, column, board, mark);
-    markNumber.vertical = checkVertical(row, column, board, mark);
+    markNumber.horizontal = checkHorizontal(...arguments);
+    markNumber.vertical = checkVertical(...arguments);
 
     return markNumber;
 }
