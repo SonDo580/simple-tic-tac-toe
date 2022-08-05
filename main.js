@@ -94,15 +94,12 @@ function addMark(event) {
 }
 
 function isGameOver(row, column, board, mark) {
-    let currentRow = row;
-    let currentColumn = column;
     let markNumber = 1;      
 
     
 }
 
 function checkHorizontal(row, column, board, mark) {
-    // Search left
     let currentColumn = column;
     while (--currentColumn >= 0) {
         if (board[row][currentColumn] !== mark) {
@@ -111,7 +108,6 @@ function checkHorizontal(row, column, board, mark) {
         markNumber++;
     }
 
-    // Search right
     currentColumn = column;
     while (++currentColumn < SIDE) {
         if (board[row][currentColumn] !== mark) {
