@@ -96,16 +96,18 @@ function addMark(event) {
 function isGameOver(row, column, board, mark) {
     let currentRow = row;
     let currentColumn = column;
-    let markNumber = 0;      
+    let markNumber = 1;      
 
-    // Search horizontally
+    // Search left
     // while (--currentColumn >= 0) {
     //     if (board[currentRow][currentColumn] !== mark) {
     //         break;
     //     }
     //     markNumber++;
     // }
-
+    
+    // // Search right
+    // currentColumn = column;
     // while (++currentColumn < SIDE) {
     //     if (board[currentRow][currentColumn] !== mark) {
     //         break;
