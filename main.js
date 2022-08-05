@@ -102,10 +102,10 @@ function addMark(event) {
 }
 
 function checkAllDirections(row, column, board, mark) {
-    if (checkHorizontal(row, column, board, mark) >= 5) {
-        return 'Game Over!';
-    }
-    // add other directions
+    const markNumber = {};
+    markNumber.horizontal = checkHorizontal(row, column, board, mark);
+
+    return markNumber;
 }
 
 function checkHorizontal(row, column, board, mark) {
