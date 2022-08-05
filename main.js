@@ -10,6 +10,10 @@ const gameBoard = (() => {
         board.push(row);
     }
 
+    const getBoard = () => {
+        return board;
+    }
+
     const renderBoard = () => {
         const gameBoardDiv = document.querySelector('#gameBoard');
 
@@ -43,7 +47,7 @@ const gameBoard = (() => {
         board[row][column] = mark;
     }
 
-    return {renderBoard, getCell, setCell};
+    return {getBoard, renderBoard, getCell, setCell};
 })();
 
 gameBoard.renderBoard();
@@ -76,6 +80,8 @@ function addMark(event) {
 
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
+
+        // isGameOver(row, column, )
     } else {
         gameBoard.setCell(row, column, player2.getMark());
 
@@ -91,7 +97,8 @@ function isGameOver(row, column, board) {
     let currentColumn = column;
     let markNumber = 0;      
 
-    while (currentRow >= 0) {
-
-    }
+    // while (currentColumn >= 0) {
+    //     markNumber++;
+    //     currentColumn--;
+    // }
 }
