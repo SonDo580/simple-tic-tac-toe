@@ -68,7 +68,12 @@ function addMark(event) {
         return;
     }
 
+    const row = cell.getAttribute('data-row');
+    const column = cell.getAttribute('data-column');
+
     if (player1Turn) {
+        
+
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
     } else {
