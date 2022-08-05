@@ -84,3 +84,14 @@ function addMark(event) {
     }
     player1Turn = !player1Turn;
 }
+
+function isGameOver(row, column, board) {
+    let mark = board[row][column];
+    let currentRow = row;
+    let currentColumn = column;
+    let markNumber = 1;      
+
+    // while (currentRow >= 0) {
+
+    // }
+}
