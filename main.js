@@ -39,15 +39,11 @@ const gameBoard = (() => {
         }
     };
 
-    const getCell = (row, column) => {
-        return board[row][column];
-    };
-
     const setCell = (row, column, mark) => {
         board[row][column] = mark;
     }
 
-    return { getBoard, renderBoard, getCell, setCell };
+    return { getBoard, renderBoard, setCell };
 })();
 
 gameBoard.renderBoard();
@@ -89,7 +85,7 @@ function addMark(event) {
     cell.textContent = mark;
     cell.style.color = color;
 
-    checkAllDirections(row, column, gameBoard.getBoard(), mark);
+    console.log(checkAllDirections(row, column, gameBoard.getBoard(), mark));
 
     player1Turn = !player1Turn;
 }
