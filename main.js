@@ -103,13 +103,15 @@ function addMark(event) {
     cell.classList.add('highlight');
 
 
-    console.log(checkAllDirections(row, column, gameBoard.getBoard(), mark));
 
+    // Set up the next turn
     lastCell = cell;
     player1Turn = !player1Turn;
 }
 
-
+// function endGame(row, column, board, mark) {
+    
+// }
 
 function checkAllDirections(row, column, board, mark) {
     const markNumber = {
