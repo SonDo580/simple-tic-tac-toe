@@ -75,6 +75,13 @@ function addMark(event) {
     const row = cell.getAttribute('data-row');
     const column = cell.getAttribute('data-column');
 
+    const mark = '';
+    if (player1Turn) {
+        mark = player1.getMark()
+    } else {
+        mark = player2.getMark();
+    }
+
     if (player1Turn) {        
         gameBoard.setCell(row, column, player1.getMark());
 
