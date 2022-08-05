@@ -152,3 +152,27 @@ function checkVertical(row, column, board, mark) {
 
     return markNumber;
 }
+
+function checkNorthWest_SouthEast(row, column, board, mark) {
+    let markNumber = 1;
+    let currentRow = row;
+    let currentColumn = column;
+
+    while (--currentRow >= 0 && --currentColumn >= 0) {
+        if (board[currentRow][currentColumn] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    currentRow = row;
+    currentColumn = column;
+    while (++currentRow < SIDE && ++currentColumn < SIDE) {
+        if (board[currentRow][currentColumn] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    return markNumber;
+}
