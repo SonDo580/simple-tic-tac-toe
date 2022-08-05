@@ -71,12 +71,14 @@ function addMark(event) {
     const row = cell.getAttribute('data-row');
     const column = cell.getAttribute('data-column');
 
-    if (player1Turn) {
-        
+    if (player1Turn) {        
+        gameBoard.setCell(row, column, player1.getMark());
 
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
     } else {
+        gameBoard.setCell(row, column, player2.getMark());
+
         cell.textContent = player2.getMark();
         cell.style.color = 'blue';
     }
