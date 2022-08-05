@@ -91,8 +91,7 @@ function addMark(event) {
     player1Turn = !player1Turn;
 }
 
-function isGameOver(row, column, board) {
-    let mark = board[row][column];
+function isGameOver(row, column, board, mark) {
     let currentRow = row;
     let currentColumn = column;
     let markNumber = 0;      
