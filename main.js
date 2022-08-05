@@ -89,9 +89,9 @@ function isGameOver(row, column, board) {
     let mark = board[row][column];
     let currentRow = row;
     let currentColumn = column;
-    let markNumber = 1;      
+    let markNumber = 0;      
 
-    // while (currentRow >= 0) {
+    while (currentRow >= 0) {
 
-    // }
+    }
 }
