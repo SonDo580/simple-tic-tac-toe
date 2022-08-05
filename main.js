@@ -81,26 +81,27 @@ function addMark(event) {
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
 
-        isGameOver(row, column, gameBoard.getBoard(), player1.getMark());
+        checkAllDirections(row, column, gameBoard.getBoard(), player1.getMark());
     } else {
         gameBoard.setCell(row, column, player2.getMark());
 
         cell.textContent = player2.getMark();
         cell.style.color = 'blue';
 
-        isGameOver(row, column, gameBoard.getBoard(), player2.getMark());
+        checkAllDirections(row, column, gameBoard.getBoard(), player2.getMark());
     }
     player1Turn = !player1Turn;
 }
 
 function isGameOver(row, column, board, mark) {
-    // return checkHorizontal(row, column, board, mark);
+    return checkAll(row, column, board, mark);
 }
 
-function checkAll(row, column, board, mark) {
+function checkAllDirections(row, column, board, mark) {
     if (checkHorizontal(row, column, board, mark) >= 5) {
         return 'Game Over!';
     }
+    // add other directions
 }
 
 function checkHorizontal(row, column, board, mark) {
