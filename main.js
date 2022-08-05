@@ -98,22 +98,29 @@ function isGameOver(row, column, board, mark) {
     let currentColumn = column;
     let markNumber = 1;      
 
-    // Search left
-    // while (--currentColumn >= 0) {
-    //     if (board[currentRow][currentColumn] !== mark) {
-    //         break;
-    //     }
-    //     markNumber++;
-    // }
     
-    // // Search right
-    // currentColumn = column;
-    // while (++currentColumn < SIDE) {
-    //     if (board[currentRow][currentColumn] !== mark) {
-    //         break;
-    //     }
-    //     markNumber++;
-    // }
+}
 
-    // console.log(markNumber);
+function checkHorizontal(row, column, board, mark) {
+    // Search left
+    let currentColumn = column;
+    while (--currentColumn >= 0) {
+        if (board[row][currentColumn] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    // Search right
+    currentColumn = column;
+    while (++currentColumn < SIDE) {
+        if (board[row][currentColumn] !== mark) {
+            break;
+        }
+        markNumber++;
+    }
+
+    if(markNumber >= 5) {
+        return true;
+    }
 }
