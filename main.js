@@ -81,12 +81,14 @@ function addMark(event) {
         cell.textContent = player1.getMark();
         cell.style.color = 'red';
 
-        // isGameOver(row, column, )
+        isGameOver(row, column, gameBoard.getBoard(), player1.getMark());
     } else {
         gameBoard.setCell(row, column, player2.getMark());
 
         cell.textContent = player2.getMark();
         cell.style.color = 'blue';
+
+        isGameOver(row, column, gameBoard.getBoard(), player2.getMark());
     }
     player1Turn = !player1Turn;
 }
