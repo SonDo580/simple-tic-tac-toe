@@ -1,6 +1,6 @@
+const SIDE = 10;    // the number of squares per side of the board
+
 const gameBoard = (() => {
-    const SIDE = 10;    // the number of squares per side of the board
-    
     const board = [];
     for (let i = 0; i < SIDE; i++) {
         const row = [];
@@ -98,8 +98,20 @@ function isGameOver(row, column, board, mark) {
     let currentColumn = column;
     let markNumber = 0;      
 
-    // while (currentColumn >= 0) {
+    // Search horizontally
+    // while (--currentColumn >= 0) {
+    //     if (board[currentRow][currentColumn] !== mark) {
+    //         break;
+    //     }
     //     markNumber++;
-    //     currentColumn--;
     // }
+
+    // while (++currentColumn < SIDE) {
+    //     if (board[currentRow][currentColumn] !== mark) {
+    //         break;
+    //     }
+    //     markNumber++;
+    // }
+
+    // console.log(markNumber);
 }
