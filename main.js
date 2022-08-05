@@ -93,10 +93,6 @@ function addMark(event) {
     player1Turn = !player1Turn;
 }
 
-function isGameOver(row, column, board, mark) {
-    return checkAll(row, column, board, mark);
-}
-
 function checkAllDirections(row, column, board, mark) {
     if (checkHorizontal(row, column, board, mark) >= 5) {
         return 'Game Over!';
