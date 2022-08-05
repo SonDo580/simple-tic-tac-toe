@@ -66,9 +66,9 @@ const player = (name, mark) => {
 const player1 = player('Shadow', 'X');
 const player2 = player('Sonic', 'O');
 
-// const playersDiv = document.querySelector('#players');
-// playersDiv.appendChild(player1.renderPlayer());
-// playersDiv.appendChild(player2.renderPlayer());
+const playersDiv = document.querySelector('#players');
+playersDiv.appendChild(player1.renderPlayer());
+playersDiv.appendChild(player2.renderPlayer());
 
 
 let player1Turn = true; // Shadow will go first
