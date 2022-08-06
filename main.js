@@ -19,6 +19,7 @@ const gameBoard = (() => {
 
     const renderBoard = () => {
         const gameBoardDiv = document.querySelector('#gameBoard');
+        gameBoardDiv.textContent = '';
 
         for (let i = 0; i < SIDE; i++) {
             for (let j = 0; j < SIDE; j++) {
