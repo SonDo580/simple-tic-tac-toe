@@ -119,6 +119,10 @@ function isGameOver() {
     }
 
     return false;
+
+    // There's another case: a draw
+    // In that case, no lines are gonna be highlighted 
+    // Player will have to click the restart button to play again in both cases.
 }
 
 function endGame() {
