@@ -144,6 +144,16 @@ function endGame() {
             }
         }
     }
+
+    stopAddingMark();
+}
+
+function stopAddingMark() {
+    const cells = document.querySelectorAll('.cell');
+    
+    for (let cell of cells) {
+        cell.removeEventListener('click', addMark);
+    }
 }
 
 function colorHorizontal(row, column, mark) {
