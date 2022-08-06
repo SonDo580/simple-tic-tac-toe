@@ -182,7 +182,7 @@ const highlighter = (() => {
         }
     }
     
-    const colorHorizontal = (row, column, mark) => {
+    const __colorHorizontal = (row, column, mark) => {
         let currentColumn = column;
     
         while (--currentColumn >= 0) {
@@ -201,7 +201,7 @@ const highlighter = (() => {
         }
     }
     
-    const colorVertical = (row, column, mark) => {
+    const __colorVertical = (row, column, mark) => {
         let currentRow = row;
     
         while (--currentRow >= 0) {
@@ -220,7 +220,7 @@ const highlighter = (() => {
         }
     }
     
-    const colorNorthWest_SouthEast = (row, column, mark) => {
+    const __colorNorthWest_SouthEast = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
     
@@ -241,7 +241,7 @@ const highlighter = (() => {
         }
     }
     
-    const colorNorthEast_SouthWest = (row, column, mark) => {
+    const __colorNorthEast_SouthWest = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
     
