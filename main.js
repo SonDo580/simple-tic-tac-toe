@@ -43,7 +43,11 @@ const gameBoard = (() => {
         board[row][column] = mark;
     }
 
-    return { getBoard, renderBoard, setCell };
+    const getCell = (row, column) => {
+        return board[row][column];
+    }
+
+    return { getBoard, renderBoard, setCell, getCell };
 })();
 
 gameBoard.renderBoard();
@@ -102,7 +106,7 @@ function addMark(event) {
     }
     cell.classList.add('highlight');
 
-
+    
 
     // Set up the next turn
     lastCell = cell;
