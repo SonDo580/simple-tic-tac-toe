@@ -146,7 +146,7 @@ function isGameOver() {
 
 function endGame() {
     const markNumberObject = checkAllDirections(...arguments);
-    colorWinningLines(markNumberObject, ...arguments);
+    highlighter.colorWinningLines(markNumberObject, ...arguments);
     stopAddingMark(); // Player will have to click the restart button to play again.
 }
 
