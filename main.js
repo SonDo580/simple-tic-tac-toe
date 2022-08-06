@@ -93,16 +93,16 @@ const gameController = (() => {
         player1Turn = true;
         lastCell = null;
     }
-    
+
     const addMark = (event) => {
         const cell = event.target;
         if (cell.textContent !== '') {
             return;
         }
-    
+
         const row = cell.getAttribute('data-row');
         const column = cell.getAttribute('data-column');
-    
+
         let mark = '';
         let color = '';
         if (player1Turn) {
@@ -112,51 +112,53 @@ const gameController = (() => {
             mark = player2.getMark();
             color = 'blue';
         }
-    
+
         gameBoard.setCellContent(row, column, mark);
         cell.textContent = mark;
         cell.style.color = color;
-    
+
         if (lastCell !== null) {
             lastCell.classList.remove('highlight');
         }
         cell.classList.add('highlight');
-    
+
         if (_isGameOver(row, column, mark)) {
             _endGame(row, column, mark);
         }
-    
+
         // Set up the next turn
         lastCell = cell;
         player1Turn = !player1Turn;
     }
-    
+
     const _isGameOver = () => {
         const markNumber = checker.checkAllDirections(...arguments);
-    
+
         for (let key in markNumber) {
             if (markNumber[key] >= 5) {
                 return true;
             }
         }
         return false;
-    
+
         // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
-    
+
     const _endGame = () => {
         const markNumberObject = checker.checkAllDirections(...arguments);
         highlighter.colorWinningLines(markNumberObject, ...arguments);
         _stopAddingMark(); // Player will have to click the restart button to play again.
     }
-    
+
     const _stopAddingMark = () => {
         const cells = document.querySelectorAll('.cell');
-    
+
         for (let cell of cells) {
             cell.removeEventListener('click', addMark);
         }
     }
+
+    return { resetGame, addMark };
 })();
 
 const highlighter = (() => {
