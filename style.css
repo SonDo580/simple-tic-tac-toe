@@ -2,15 +2,18 @@
     --side: 10;
 }
 
+.wrapper {
+    width: 500px;
+    margin: 0 auto;
+}
+
 #gameBoard {
     display: grid;
     grid-template-columns: repeat(var(--side), 1fr);
     grid-template-rows: repeat(var(--side), 1fr);
 
-    width: 500px;
     height: 500px;
     border: 1px solid black;
-    margin: 0 auto;
 }
 
 .cell {
@@ -27,8 +30,6 @@
     display: flex;
     justify-content: space-between;
 
-    width: 500px;
-    margin: 0 auto;
     font-weight: bold;
     font-size: 1.2rem;
 }
