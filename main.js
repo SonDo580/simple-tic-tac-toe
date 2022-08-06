@@ -86,11 +86,11 @@ resetButton.addEventListener('click', resetGame);
 let player1Turn = true;     // player1 will go first
 let lastCell = null;
 
-// function resetGame() {
-
-//     player1Turn = true;
-//     lastCell = null;
-// }
+function resetGame() {
+    gameBoard.resetBoard();
+    player1Turn = true;
+    lastCell = null;
+}
 
 function addMark(event) {
     const cell = event.target;
