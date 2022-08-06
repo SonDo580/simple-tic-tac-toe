@@ -82,7 +82,7 @@ playersDiv.appendChild(player1.renderPlayer());
 playersDiv.appendChild(player2.renderPlayer());
 
 const resetButton = document.querySelector('#restart');
-resetButton.addEventListener('click', resetGame);
+resetButton.addEventListener('click', gameController.resetGame);
 
 const gameController = (() => {
     let player1Turn = true;     // player1 will go first
