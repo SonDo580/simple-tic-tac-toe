@@ -48,11 +48,12 @@ const gameBoard = (() => {
         return board[row][column];
     }
 
-    // const resetBoard = () => {
+    const resetBoard = () => {
+        board = __createBoard();
+        renderBoard();
+    }
 
-    // }
-
-    return { renderBoard, getCell, setCellContent, getCellContent };
+    return { renderBoard, getCell, setCellContent, getCellContent, resetBoard };
 })();
 
 gameBoard.renderBoard();
