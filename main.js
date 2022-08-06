@@ -127,7 +127,7 @@ function endGame() {
 
     for (let key in markNumber) {
         if (markNumber[key] >= 5) {
-            arrayHighlight.push(markNumber[key]);
+            arrayHighlight.push(key);
         }
     }
 
@@ -136,6 +136,12 @@ function endGame() {
     // colorNorthWest_SouthEast(...arguments);
     // colorNorthEast_SouthWest(...arguments);
 }
+
+// function colorWinningLines(arrayLines) {
+//     for (let item in arrayLines) {
+
+//     }
+// }
 
 function colorHorizontal(row, column, mark) {
     let currentColumn = column;
