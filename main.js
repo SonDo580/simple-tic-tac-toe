@@ -87,6 +87,10 @@ let lastCell = null;
 const resetButton = document.querySelector('#restart');
 resetButton.addEventListener('click', resetGame);
 
+const gameController = (() => {
+    
+})();
+
 function resetGame() {
     gameBoard.resetBoard();
     player1Turn = true;
