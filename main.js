@@ -106,14 +106,14 @@ function addMark(event) {
     }
     cell.classList.add('highlight');
 
-    
+
 
     // Set up the next turn
     lastCell = cell;
     player1Turn = !player1Turn;
 }
 
-function isGameOver(row, column, mark) {
+function isGameOver() {
     const markNumber = checkAllDirections(...arguments);
 
     for (let key in markNumber) {
@@ -125,7 +125,7 @@ function isGameOver(row, column, mark) {
     return false;
 }
 
-function checkAllDirections(row, column, mark) {
+function checkAllDirections() {
     const markNumber = {
         horizontal : checkHorizontal(...arguments),
         vertical: checkVertical(...arguments),
