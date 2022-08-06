@@ -81,7 +81,7 @@ const playersDiv = document.querySelector('#players');
 playersDiv.appendChild(player1.renderPlayer());
 playersDiv.appendChild(player2.renderPlayer());
 
-const resetButton = document.querySelector('#restart');
+const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', gameController.resetGame);
 
 const gameController = (() => {
