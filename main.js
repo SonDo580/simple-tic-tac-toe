@@ -159,7 +159,7 @@ function stopAddingMark() {
 }
 
 const highlighter = (() => {
-    function colorWinningLines(markNumberObject, ...arguments) {
+    const colorWinningLines = (markNumberObject, ...arguments) => {
         for (let line in markNumberObject) {
             if (markNumberObject[line] >= 5) {
                 switch (line) {
@@ -182,7 +182,7 @@ const highlighter = (() => {
         }
     }
     
-    function colorHorizontal(row, column, mark) {
+    const colorHorizontal = (row, column, mark) => {
         let currentColumn = column;
     
         while (--currentColumn >= 0) {
@@ -201,7 +201,7 @@ const highlighter = (() => {
         }
     }
     
-    function colorVertical(row, column, mark) {
+    const colorVertical = (row, column, mark) => {
         let currentRow = row;
     
         while (--currentRow >= 0) {
@@ -220,7 +220,7 @@ const highlighter = (() => {
         }
     }
     
-    function colorNorthWest_SouthEast(row, column, mark) {
+    const colorNorthWest_SouthEast = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
     
@@ -241,7 +241,7 @@ const highlighter = (() => {
         }
     }
     
-    function colorNorthEast_SouthWest(row, column, mark) {
+    const colorNorthEast_SouthWest = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
     
