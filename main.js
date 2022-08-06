@@ -134,24 +134,24 @@ function endGame() {
     
 }
 
-// function colorHorizontal(row, column, mark) {
-//     let currentColumn = column;
+function colorHorizontal(row, column, mark) {
+    let currentColumn = column;
 
-//     while (--currentColumn >= 0) {
-//         if (gameBoard.getCellContent(row, currentColumn) !== mark) {
-//             break;
-//         }
-        
-//     }
+    while (--currentColumn >= 0) {
+        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(row, currentColumn).classList.add('highlight');
+    }
 
-//     currentColumn = column;
-//     while (++currentColumn < SIDE) {
-//         if (gameBoard.getCellContent(row, currentColumn) !== mark) {
-//             break;
-//         }
-        
-//     }
-// }
+    currentColumn = column;
+    while (++currentColumn < SIDE) {
+        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(row, currentColumn).classList.add('highlight');
+    }
+}
 
 function checkAllDirections() {
     const markNumber = {
