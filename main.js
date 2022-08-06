@@ -164,16 +164,16 @@ const highlighter = (() => {
             if (markNumberObject[line] >= 5) {
                 switch (line) {
                     case 'horizontal':
-                        colorHorizontal(...arguments);
+                        __colorHorizontal(...arguments);
                         break;
                     case 'vertical':
-                        colorVertical(...arguments);
+                        __colorVertical(...arguments);
                         break;
                     case 'northwest_southeast':
-                        colorNorthWest_SouthEast(...arguments);
+                        __colorNorthWest_SouthEast(...arguments);
                         break;
                     case 'northeast_southwest':
-                        colorNorthEast_SouthWest(...arguments);
+                        __colorNorthEast_SouthWest(...arguments);
                         break;
                     default:
                         alert('Something\'s wrong!');
@@ -181,17 +181,17 @@ const highlighter = (() => {
             }
         }
     }
-    
+
     const __colorHorizontal = (row, column, mark) => {
         let currentColumn = column;
-    
+
         while (--currentColumn >= 0) {
             if (gameBoard.getCellContent(row, currentColumn) !== mark) {
                 break;
             }
             gameBoard.getCell(row, currentColumn).classList.add('highlight');
         }
-    
+
         currentColumn = column;
         while (++currentColumn < SIDE) {
             if (gameBoard.getCellContent(row, currentColumn) !== mark) {
@@ -200,17 +200,17 @@ const highlighter = (() => {
             gameBoard.getCell(row, currentColumn).classList.add('highlight');
         }
     }
-    
+
     const __colorVertical = (row, column, mark) => {
         let currentRow = row;
-    
+
         while (--currentRow >= 0) {
             if (gameBoard.getCellContent(currentRow, column) !== mark) {
                 break;
             }
             gameBoard.getCell(currentRow, column).classList.add('highlight');
         }
-    
+
         currentRow = row;
         while (++currentRow < SIDE) {
             if (gameBoard.getCellContent(currentRow, column) !== mark) {
@@ -219,18 +219,18 @@ const highlighter = (() => {
             gameBoard.getCell(currentRow, column).classList.add('highlight');
         }
     }
-    
+
     const __colorNorthWest_SouthEast = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
-    
+
         while (--currentRow >= 0 && --currentColumn >= 0) {
             if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
                 break;
             }
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
-    
+
         currentRow = row;
         currentColumn = column;
         while (++currentRow < SIDE && ++currentColumn < SIDE) {
@@ -240,18 +240,18 @@ const highlighter = (() => {
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
     }
-    
+
     const __colorNorthEast_SouthWest = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
-    
+
         while (--currentRow >= 0 && ++currentColumn < SIDE) {
             if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
                 break;
             }
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
-    
+
         currentRow = row;
         currentColumn = column;
         while (++currentRow < SIDE && --currentColumn >= 0) {
@@ -261,6 +261,8 @@ const highlighter = (() => {
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
     }
+
+    return { colorWinningLines };
 })();
 
 function checkAllDirections() {
