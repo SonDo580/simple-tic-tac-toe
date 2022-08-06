@@ -22,12 +22,6 @@ const gameBoard = (() => {
                 cell.setAttribute('data-row', i);
                 cell.setAttribute('data-column', j);
 
-                if (board[i][j] === 'X') {
-                    cell.style.color = 'red';
-                } else {
-                    cell.style.color = 'blue';
-                }
-
                 cell.addEventListener('click', addMark);
 
                 gameBoardDiv.appendChild(cell);
