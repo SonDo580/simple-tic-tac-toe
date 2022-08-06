@@ -138,7 +138,6 @@ function isGameOver() {
             return true;
         }
     }
-
     return false;
 
     // There's another case: a draw. In that case, no lines are gonna be highlighted.
@@ -265,105 +264,109 @@ const highlighter = (() => {
     return { colorWinningLines };
 })();
 
-function checkAllDirections() {
-    const markNumberObject = {
-        horizontal: checkHorizontal(...arguments),
-        vertical: checkVertical(...arguments),
-        northwest_southeast: checkNorthWest_SouthEast(...arguments),
-        northeast_southwest: checkNorthEast_SouthWest(...arguments)
-    };
+const checker = (() => {
+    const checkAllDirections = () => {
+        const markNumberObject = {
+            horizontal: _checkHorizontal(...arguments),
+            vertical: _checkVertical(...arguments),
+            northwest_southeast: _checkNorthWest_SouthEast(...arguments),
+            northeast_southwest: _checkNorthEast_SouthWest(...arguments)
+        };
 
-    return markNumberObject;
-}
-
-function checkHorizontal(row, column, mark) {
-    let markNumber = 1;
-    let currentColumn = column;
-
-    while (--currentColumn >= 0) {
-        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
-            break;
-        }
-        markNumber++;
+        return markNumberObject;
     }
 
-    currentColumn = column;
-    while (++currentColumn < SIDE) {
-        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
-            break;
+    const _checkHorizontal = (row, column, mark) => {
+        let markNumber = 1;
+        let currentColumn = column;
+
+        while (--currentColumn >= 0) {
+            if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
         }
-        markNumber++;
+
+        currentColumn = column;
+        while (++currentColumn < SIDE) {
+            if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
+        }
+
+        return markNumber;
     }
 
-    return markNumber;
-}
+    const _checkVertical = (row, column, mark) => {
+        let markNumber = 1;
+        let currentRow = row;
 
-function checkVertical(row, column, mark) {
-    let markNumber = 1;
-    let currentRow = row;
-
-    while (--currentRow >= 0) {
-        if (gameBoard.getCellContent(currentRow, column) !== mark) {
-            break;
+        while (--currentRow >= 0) {
+            if (gameBoard.getCellContent(currentRow, column) !== mark) {
+                break;
+            }
+            markNumber++;
         }
-        markNumber++;
+
+        currentRow = row;
+        while (++currentRow < SIDE) {
+            if (gameBoard.getCellContent(currentRow, column) !== mark) {
+                break;
+            }
+            markNumber++;
+        }
+
+        return markNumber;
     }
 
-    currentRow = row;
-    while (++currentRow < SIDE) {
-        if (gameBoard.getCellContent(currentRow, column) !== mark) {
-            break;
+    const _checkNorthWest_SouthEast = (row, column, mark) => {
+        let markNumber = 1;
+        let currentRow = row;
+        let currentColumn = column;
+
+        while (--currentRow >= 0 && --currentColumn >= 0) {
+            if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
         }
-        markNumber++;
+
+        currentRow = row;
+        currentColumn = column;
+        while (++currentRow < SIDE && ++currentColumn < SIDE) {
+            if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
+        }
+
+        return markNumber;
     }
 
-    return markNumber;
-}
+    const _checkNorthEast_SouthWest = (row, column, mark) => {
+        let markNumber = 1;
+        let currentRow = row;
+        let currentColumn = column;
 
-function checkNorthWest_SouthEast(row, column, mark) {
-    let markNumber = 1;
-    let currentRow = row;
-    let currentColumn = column;
-
-    while (--currentRow >= 0 && --currentColumn >= 0) {
-        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
-            break;
+        while (--currentRow >= 0 && ++currentColumn < SIDE) {
+            if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
         }
-        markNumber++;
+
+        currentRow = row;
+        currentColumn = column;
+        while (++currentRow < SIDE && --currentColumn >= 0) {
+            if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+                break;
+            }
+            markNumber++;
+        }
+
+        return markNumber;
     }
 
-    currentRow = row;
-    currentColumn = column;
-    while (++currentRow < SIDE && ++currentColumn < SIDE) {
-        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
-            break;
-        }
-        markNumber++;
-    }
-
-    return markNumber;
-}
-
-function checkNorthEast_SouthWest(row, column, mark) {
-    let markNumber = 1;
-    let currentRow = row;
-    let currentColumn = column;
-
-    while (--currentRow >= 0 && ++currentColumn < SIDE) {
-        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
-            break;
-        }
-        markNumber++;
-    }
-
-    currentRow = row;
-    currentColumn = column;
-    while (++currentRow < SIDE && --currentColumn >= 0) {
-        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
-            break;
-        }
-        markNumber++;
-    }
-
-    return markNumber;
-}
+    return { checkAllDirections };
+})();
