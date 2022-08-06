@@ -307,7 +307,7 @@ const gameController = (() => {
         lastCell = null;
     }
 
-    const _isGameOver = () => {
+    const isGameOver = () => {
         const markNumber = checker.checkAllDirections(...arguments);
 
         for (let key in markNumber) {
@@ -320,7 +320,7 @@ const gameController = (() => {
         // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
 
-    const _endGame = () => {
+    const endGame = () => {
         const markNumberObject = checker.checkAllDirections(...arguments);
         highlighter.colorWinningLines(markNumberObject, ...arguments);
         _stopAddingMark(); // Player will have to click the restart button to play again.
@@ -334,7 +334,7 @@ const gameController = (() => {
         }
     }
 
-    return { resetGame, addMark };
+    return { resetGame, isGameOver, endGame };
 })();
 
 
