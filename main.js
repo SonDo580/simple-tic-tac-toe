@@ -30,7 +30,7 @@ const gameBoard = (() => {
                 cell.setAttribute('data-row', i);
                 cell.setAttribute('data-column', j);
 
-                cell.addEventListener('click', gameController.addMark);
+                cell.addEventListener('click', addMark);
 
                 gameBoardDiv.appendChild(cell);
             }
