@@ -81,13 +81,12 @@ const playersDiv = document.querySelector('#players');
 playersDiv.appendChild(player1.renderPlayer());
 playersDiv.appendChild(player2.renderPlayer());
 
-let player1Turn = true;     // player1 will go first
-let lastCell = null;
-
 const resetButton = document.querySelector('#restart');
 resetButton.addEventListener('click', resetGame);
 
 const gameController = (() => {
+    let player1Turn = true;     // player1 will go first
+    let lastCell = null;
     
 })();
 
