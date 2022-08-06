@@ -122,8 +122,8 @@ const gameController = (() => {
         }
         cell.classList.add('highlight');
     
-        if (isGameOver(row, column, mark)) {
-            endGame(row, column, mark);
+        if (_isGameOver(row, column, mark)) {
+            _endGame(row, column, mark);
         }
     
         // Set up the next turn
@@ -131,7 +131,7 @@ const gameController = (() => {
         player1Turn = !player1Turn;
     }
     
-    const isGameOver = () => {
+    const _isGameOver = () => {
         const markNumber = checker.checkAllDirections(...arguments);
     
         for (let key in markNumber) {
@@ -144,13 +144,13 @@ const gameController = (() => {
         // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
     
-    const endGame = () => {
+    const _endGame = () => {
         const markNumberObject = checker.checkAllDirections(...arguments);
         highlighter.colorWinningLines(markNumberObject, ...arguments);
-        stopAddingMark(); // Player will have to click the restart button to play again.
+        _stopAddingMark(); // Player will have to click the restart button to play again.
     }
     
-    const stopAddingMark = () => {
+    const _stopAddingMark = () => {
         const cells = document.querySelectorAll('.cell');
     
         for (let cell of cells) {
