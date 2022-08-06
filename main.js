@@ -307,43 +307,6 @@ const gameController = (() => {
         lastCell = null;
     }
 
-    const addMark = (event) => {
-        const cell = event.target;
-        if (cell.textContent !== '') {
-            return;
-        }
-
-        const row = cell.getAttribute('data-row');
-        const column = cell.getAttribute('data-column');
-
-        let mark = '';
-        let color = '';
-        if (player1Turn) {
-            mark = player1.getMark();
-            color = 'red';
-        } else {
-            mark = player2.getMark();
-            color = 'blue';
-        }
-
-        gameBoard.setCellContent(row, column, mark);
-        cell.textContent = mark;
-        cell.style.color = color;
-
-        if (lastCell !== null) {
-            lastCell.classList.remove('highlight');
-        }
-        cell.classList.add('highlight');
-
-        if (_isGameOver(row, column, mark)) {
-            _endGame(row, column, mark);
-        }
-
-        // Set up the next turn
-        lastCell = cell;
-        player1Turn = !player1Turn;
-    }
-
     const _isGameOver = () => {
         const markNumber = checker.checkAllDirections(...arguments);
 
@@ -373,3 +336,41 @@ const gameController = (() => {
 
     return { resetGame, addMark };
 })();
+
+
+function addMark (event) {
+    const cell = event.target;
+    if (cell.textContent !== '') {
+        return;
+    }
+
+    const row = cell.getAttribute('data-row');
+    const column = cell.getAttribute('data-column');
+
+    let mark = '';
+    let color = '';
+    if (player1Turn) {
+        mark = player1.getMark();
+        color = 'red';
+    } else {
+        mark = player2.getMark();
+        color = 'blue';
+    }
+
+    gameBoard.setCellContent(row, column, mark);
+    cell.textContent = mark;
+    cell.style.color = color;
+
+    if (lastCell !== null) {
+        lastCell.classList.remove('highlight');
+    }
+    cell.classList.add('highlight');
+
+    if (_isGameOver(row, column, mark)) {
+        _endGame(row, column, mark);
+    }
+
+    // Set up the next turn
+    lastCell = cell;
+    player1Turn = !player1Turn;
+}
