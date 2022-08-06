@@ -1,7 +1,7 @@
 const SIDE = 10;    // the number of squares per side of the board
 
 const gameBoard = (() => {
-    const __createBoard = () => {
+    const _createBoard = () => {
         const board = [];
 
         for (let i = 0; i < SIDE; i++) {
@@ -15,7 +15,7 @@ const gameBoard = (() => {
         return board;
     }
 
-    let board = __createBoard();
+    let board = _createBoard();
 
     const renderBoard = () => {
         const gameBoardDiv = document.querySelector('#gameBoard');
@@ -50,7 +50,7 @@ const gameBoard = (() => {
     }
 
     const resetBoard = () => {
-        board = __createBoard();
+        board = _createBoard();
         renderBoard();
     }
 
@@ -164,16 +164,16 @@ const highlighter = (() => {
             if (markNumberObject[line] >= 5) {
                 switch (line) {
                     case 'horizontal':
-                        __colorHorizontal(...arguments);
+                        _colorHorizontal(...arguments);
                         break;
                     case 'vertical':
-                        __colorVertical(...arguments);
+                        _colorVertical(...arguments);
                         break;
                     case 'northwest_southeast':
-                        __colorNorthWest_SouthEast(...arguments);
+                        _colorNorthWest_SouthEast(...arguments);
                         break;
                     case 'northeast_southwest':
-                        __colorNorthEast_SouthWest(...arguments);
+                        _colorNorthEast_SouthWest(...arguments);
                         break;
                     default:
                         alert('Something\'s wrong!');
@@ -182,7 +182,7 @@ const highlighter = (() => {
         }
     }
 
-    const __colorHorizontal = (row, column, mark) => {
+    const _colorHorizontal = (row, column, mark) => {
         let currentColumn = column;
 
         while (--currentColumn >= 0) {
@@ -201,7 +201,7 @@ const highlighter = (() => {
         }
     }
 
-    const __colorVertical = (row, column, mark) => {
+    const _colorVertical = (row, column, mark) => {
         let currentRow = row;
 
         while (--currentRow >= 0) {
@@ -220,7 +220,7 @@ const highlighter = (() => {
         }
     }
 
-    const __colorNorthWest_SouthEast = (row, column, mark) => {
+    const _colorNorthWest_SouthEast = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
 
@@ -241,7 +241,7 @@ const highlighter = (() => {
         }
     }
 
-    const __colorNorthEast_SouthWest = (row, column, mark) => {
+    const _colorNorthEast_SouthWest = (row, column, mark) => {
         let currentRow = row;
         let currentColumn = column;
 
