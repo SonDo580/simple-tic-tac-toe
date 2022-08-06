@@ -87,78 +87,77 @@ resetButton.addEventListener('click', resetGame);
 const gameController = (() => {
     let player1Turn = true;     // player1 will go first
     let lastCell = null;
+
+    function resetGame() {
+        gameBoard.resetBoard();
+        player1Turn = true;
+        lastCell = null;
+    }
     
-})();
-
-function resetGame() {
-    gameBoard.resetBoard();
-    player1Turn = true;
-    lastCell = null;
-}
-
-function addMark(event) {
-    const cell = event.target;
-    if (cell.textContent !== '') {
-        return;
+    function addMark(event) {
+        const cell = event.target;
+        if (cell.textContent !== '') {
+            return;
+        }
+    
+        const row = cell.getAttribute('data-row');
+        const column = cell.getAttribute('data-column');
+    
+        let mark = '';
+        let color = '';
+        if (player1Turn) {
+            mark = player1.getMark();
+            color = 'red';
+        } else {
+            mark = player2.getMark();
+            color = 'blue';
+        }
+    
+        gameBoard.setCellContent(row, column, mark);
+        cell.textContent = mark;
+        cell.style.color = color;
+    
+        if (lastCell !== null) {
+            lastCell.classList.remove('highlight');
+        }
+        cell.classList.add('highlight');
+    
+        if (isGameOver(row, column, mark)) {
+            endGame(row, column, mark);
+        }
+    
+        // Set up the next turn
+        lastCell = cell;
+        player1Turn = !player1Turn;
     }
-
-    const row = cell.getAttribute('data-row');
-    const column = cell.getAttribute('data-column');
-
-    let mark = '';
-    let color = '';
-    if (player1Turn) {
-        mark = player1.getMark();
-        color = 'red';
-    } else {
-        mark = player2.getMark();
-        color = 'blue';
+    
+    function isGameOver() {
+        const markNumber = checker.checkAllDirections(...arguments);
+    
+        for (let key in markNumber) {
+            if (markNumber[key] >= 5) {
+                return true;
+            }
+        }
+        return false;
+    
+        // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
-
-    gameBoard.setCellContent(row, column, mark);
-    cell.textContent = mark;
-    cell.style.color = color;
-
-    if (lastCell !== null) {
-        lastCell.classList.remove('highlight');
+    
+    function endGame() {
+        const markNumberObject = checker.checkAllDirections(...arguments);
+        highlighter.colorWinningLines(markNumberObject, ...arguments);
+        stopAddingMark(); // Player will have to click the restart button to play again.
     }
-    cell.classList.add('highlight');
-
-    if (isGameOver(row, column, mark)) {
-        endGame(row, column, mark);
-    }
-
-    // Set up the next turn
-    lastCell = cell;
-    player1Turn = !player1Turn;
-}
-
-function isGameOver() {
-    const markNumber = checker.checkAllDirections(...arguments);
-
-    for (let key in markNumber) {
-        if (markNumber[key] >= 5) {
-            return true;
+    
+    function stopAddingMark() {
+        const cells = document.querySelectorAll('.cell');
+    
+        for (let cell of cells) {
+            cell.removeEventListener('click', addMark);
         }
     }
-    return false;
-
-    // There's another case: a draw. In that case, no lines are gonna be highlighted.
-}
-
-function endGame() {
-    const markNumberObject = checker.checkAllDirections(...arguments);
-    highlighter.colorWinningLines(markNumberObject, ...arguments);
-    stopAddingMark(); // Player will have to click the restart button to play again.
-}
-
-function stopAddingMark() {
-    const cells = document.querySelectorAll('.cell');
-
-    for (let cell of cells) {
-        cell.removeEventListener('click', addMark);
-    }
-}
+})();
 
 const highlighter = (() => {
     const colorWinningLines = (markNumberObject, ...arguments) => {
