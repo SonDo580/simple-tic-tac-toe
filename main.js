@@ -120,15 +120,13 @@ function isGameOver() {
 
     return false;
 
-    // There's another case: a draw
-    // In that case, no lines are gonna be highlighted 
-    // Player will have to click the restart button to play again in both cases.
+    // There's another case: a draw. In that case, no lines are gonna be highlighted.
 }
 
 function endGame() {
     const markNumberObject = checkAllDirections(...arguments);
     colorWinningLines(markNumberObject, ...arguments);
-    stopAddingMark();
+    stopAddingMark(); // Player will have to click the restart button to play again.
 }
 
 function stopAddingMark() {
