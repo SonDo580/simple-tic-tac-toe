@@ -124,16 +124,26 @@ function isGameOver() {
 function endGame() {
     const markNumber = checkAllDirections(...arguments);
 
-    for (let key in markNumber) {
-        if (markNumber[key] >= 5) {
-            
+    for (let line in markNumber) {
+        if (markNumber[line] >= 5) {
+            switch (line) {
+                case 'horizontal':
+                    colorHorizontal(...arguments);
+                    break;
+                case 'vertical':
+                    colorVertical(...arguments);
+                    break;
+                case 'northwest_southeast':
+                    colorNorthWest_SouthEast(...arguments);
+                    break;
+                case 'northeast_southwest':
+                    colorNorthEast_SouthWest(...arguments);
+                    break;
+                default:
+                    alert('Something\'s wrong!');
+            }
         }
     }
-
-    // colorHorizontal(...arguments);
-    // colorVertical(...arguments);
-    // colorNorthWest_SouthEast(...arguments);
-    // colorNorthEast_SouthWest(...arguments);
 }
 
 function colorHorizontal(row, column, mark) {
