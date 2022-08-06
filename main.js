@@ -109,9 +109,17 @@ function addMark(event) {
     player1Turn = !player1Turn;
 }
 
-// function endGame(row, column, board, mark) {
-    
-// }
+function isGameOver(row, column, board, mark) {
+    const markNumber = checkAllDirections(...arguments);
+
+    for (let key in markNumber) {
+        if (markNumber[key] >= 5) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 function checkAllDirections(row, column, board, mark) {
     const markNumber = {
