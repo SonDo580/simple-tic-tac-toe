@@ -131,7 +131,7 @@ function addMark(event) {
 }
 
 function isGameOver() {
-    const markNumber = checkAllDirections(...arguments);
+    const markNumber = checker.checkAllDirections(...arguments);
 
     for (let key in markNumber) {
         if (markNumber[key] >= 5) {
@@ -144,7 +144,7 @@ function isGameOver() {
 }
 
 function endGame() {
-    const markNumberObject = checkAllDirections(...arguments);
+    const markNumberObject = checker.checkAllDirections(...arguments);
     highlighter.colorWinningLines(markNumberObject, ...arguments);
     stopAddingMark(); // Player will have to click the restart button to play again.
 }
