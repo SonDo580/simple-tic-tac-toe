@@ -106,6 +106,10 @@ function addMark(event) {
     }
     cell.classList.add('highlight');
 
+    if (isGameOver(row, column, mark)) {
+        endGame(row, column, mark);
+    }
+
     // Set up the next turn
     lastCell = cell;
     player1Turn = !player1Turn;
