@@ -2,10 +2,6 @@
     --side: 10;
 }
 
-body h1 {
-    text-align: center;
-}
-
 #gameBoard {
     display: grid;
     grid-template-columns: repeat(var(--side), 1fr);
