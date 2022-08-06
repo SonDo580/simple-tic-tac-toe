@@ -80,11 +80,11 @@ const playersDiv = document.querySelector('#players');
 playersDiv.appendChild(player1.renderPlayer());
 playersDiv.appendChild(player2.renderPlayer());
 
-const resetButton = document.querySelector('#reset');
-resetButton.addEventListener('click', resetGame);
-
 let player1Turn = true;     // player1 will go first
 let lastCell = null;
+
+const resetButton = document.querySelector('#restart');
+resetButton.addEventListener('click', resetGame);
 
 function resetGame() {
     gameBoard.resetBoard();
