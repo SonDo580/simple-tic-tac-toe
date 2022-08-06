@@ -57,110 +57,6 @@ const gameBoard = (() => {
     return { renderBoard, getCell, setCellContent, getCellContent, resetBoard };
 })();
 
-gameBoard.renderBoard();
-
-
-const player = (name, mark) => {
-    const getName = () => name;
-    const getMark = () => mark;
-
-    const renderPlayer = () => {
-        const playerDiv = document.createElement('div');
-        playerDiv.textContent = `${name}: ${mark}`;
-
-        return playerDiv;
-    };
-
-    return { getName, getMark, renderPlayer };
-};
-
-const player1 = player('Shadow', 'X');
-const player2 = player('Sonic', 'O');
-
-const playersDiv = document.querySelector('#players');
-playersDiv.appendChild(player1.renderPlayer());
-playersDiv.appendChild(player2.renderPlayer());
-
-const resetButton = document.querySelector('#reset');
-resetButton.addEventListener('click', gameController.resetGame);
-
-const gameController = (() => {
-    let player1Turn = true;     // player1 will go first
-    let lastCell = null;
-
-    const resetGame = () => {
-        gameBoard.resetBoard();
-        player1Turn = true;
-        lastCell = null;
-    }
-
-    const addMark = (event) => {
-        const cell = event.target;
-        if (cell.textContent !== '') {
-            return;
-        }
-
-        const row = cell.getAttribute('data-row');
-        const column = cell.getAttribute('data-column');
-
-        let mark = '';
-        let color = '';
-        if (player1Turn) {
-            mark = player1.getMark();
-            color = 'red';
-        } else {
-            mark = player2.getMark();
-            color = 'blue';
-        }
-
-        gameBoard.setCellContent(row, column, mark);
-        cell.textContent = mark;
-        cell.style.color = color;
-
-        if (lastCell !== null) {
-            lastCell.classList.remove('highlight');
-        }
-        cell.classList.add('highlight');
-
-        if (_isGameOver(row, column, mark)) {
-            _endGame(row, column, mark);
-        }
-
-        // Set up the next turn
-        lastCell = cell;
-        player1Turn = !player1Turn;
-    }
-
-    const _isGameOver = () => {
-        const markNumber = checker.checkAllDirections(...arguments);
-
-        for (let key in markNumber) {
-            if (markNumber[key] >= 5) {
-                return true;
-            }
-        }
-        return false;
-
-        // There's another case: a draw. In that case, no lines are gonna be highlighted.
-    }
-
-    const _endGame = () => {
-        const markNumberObject = checker.checkAllDirections(...arguments);
-        highlighter.colorWinningLines(markNumberObject, ...arguments);
-        _stopAddingMark(); // Player will have to click the restart button to play again.
-    }
-
-    const _stopAddingMark = () => {
-        const cells = document.querySelectorAll('.cell');
-
-        for (let cell of cells) {
-            cell.removeEventListener('click', addMark);
-        }
-    }
-
-    return { resetGame, addMark };
-})();
-
 const highlighter = (() => {
     const colorWinningLines = (markNumberObject, ...arguments) => {
         for (let line in markNumberObject) {
@@ -373,4 +269,107 @@ const checker = (() => {
     }
 
     return { checkAllDirections };
+})();
+
+const player = (name, mark) => {
+    const getName = () => name;
+    const getMark = () => mark;
+
+    const renderPlayer = () => {
+        const playerDiv = document.createElement('div');
+        playerDiv.textContent = `${name}: ${mark}`;
+
+        return playerDiv;
+    };
+
+    return { getName, getMark, renderPlayer };
+};
+
+const player1 = player('Shadow', 'X');
+const player2 = player('Sonic', 'O');
+
+const playersDiv = document.querySelector('#players');
+playersDiv.appendChild(player1.renderPlayer());
+playersDiv.appendChild(player2.renderPlayer());
+
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', gameController.resetGame);
+
+gameBoard.renderBoard();
+
+const gameController = (() => {
+    let player1Turn = true;     // player1 will go first
+    let lastCell = null;
+
+    const resetGame = () => {
+        gameBoard.resetBoard();
+        player1Turn = true;
+        lastCell = null;
+    }
+
+    const addMark = (event) => {
+        const cell = event.target;
+        if (cell.textContent !== '') {
+            return;
+        }
+
+        const row = cell.getAttribute('data-row');
+        const column = cell.getAttribute('data-column');
+
+        let mark = '';
+        let color = '';
+        if (player1Turn) {
+            mark = player1.getMark();
+            color = 'red';
+        } else {
+            mark = player2.getMark();
+            color = 'blue';
+        }
+
+        gameBoard.setCellContent(row, column, mark);
+        cell.textContent = mark;
+        cell.style.color = color;
+
+        if (lastCell !== null) {
+            lastCell.classList.remove('highlight');
+        }
+        cell.classList.add('highlight');
+
+        if (_isGameOver(row, column, mark)) {
+            _endGame(row, column, mark);
+        }
+
+        // Set up the next turn
+        lastCell = cell;
+        player1Turn = !player1Turn;
+    }
+
+    const _isGameOver = () => {
+        const markNumber = checker.checkAllDirections(...arguments);
+
+        for (let key in markNumber) {
+            if (markNumber[key] >= 5) {
+                return true;
+            }
+        }
+        return false;
+
+        // There's another case: a draw. In that case, no lines are gonna be highlighted.
+    }
+
+    const _endGame = () => {
+        const markNumberObject = checker.checkAllDirections(...arguments);
+        highlighter.colorWinningLines(markNumberObject, ...arguments);
+        _stopAddingMark(); // Player will have to click the restart button to play again.
+    }
+
+    const _stopAddingMark = () => {
+        const cells = document.querySelectorAll('.cell');
+
+        for (let cell of cells) {
+            cell.removeEventListener('click', addMark);
+        }
+    }
+
+    return { resetGame, addMark };
 })();
