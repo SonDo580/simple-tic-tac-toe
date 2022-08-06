@@ -160,9 +160,28 @@ function stopAddingMark() {
     }
 }
 
-// function colorWinningLines() {
-
-// }
+function colorWinningLines(markNumberObject, ...arguments) {
+    for (let line in markNumberObject) {
+        if (markNumberObject[line] >= 5) {
+            switch (line) {
+                case 'horizontal':
+                    colorHorizontal(...arguments);
+                    break;
+                case 'vertical':
+                    colorVertical(...arguments);
+                    break;
+                case 'northwest_southeast':
+                    colorNorthWest_SouthEast(...arguments);
+                    break;
+                case 'northeast_southwest':
+                    colorNorthEast_SouthWest(...arguments);
+                    break;
+                default:
+                    alert('Something\'s wrong!');
+            }
+        }
+    }
+}
 
 function colorHorizontal(row, column, mark) {
     let currentColumn = column;
