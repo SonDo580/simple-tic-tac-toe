@@ -334,11 +334,30 @@ const gameController = (() => {
         }
     }
 
-    return { resetGame, isGameOver, endGame };
+    const isPlayer1Turn = () => {
+        return player1Turn;
+    };
+
+    const swapTurn = () => {
+        player1Turn = !player1Turn;
+    };
+
+    const getLastCell = () => {
+        return lastCell;
+    }
+
+    const setLastCell = (cell) => {
+        lastCell = cell;
+    }
+
+    return {
+        resetGame, isGameOver, endGame,
+        isPlayer1Turn, swapTurn, getLastCell, setLastCell
+    };
 })();
 
 
-function addMark (event) {
+function addMark(event) {
     const cell = event.target;
     if (cell.textContent !== '') {
         return;
