@@ -29,6 +29,10 @@ const gameBoard = (() => {
         }
     };
 
+    const getCell = (row, column) => {
+        return document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
+    }
+
     const setCellContent = (row, column, mark) => {
         board[row][column] = mark;
     }
@@ -37,7 +41,7 @@ const gameBoard = (() => {
         return board[row][column];
     }
 
-    return { renderBoard, setCellContent, getCellContent };
+    return { renderBoard, getCell, setCellContent, getCellContent };
 })();
 
 gameBoard.renderBoard();
