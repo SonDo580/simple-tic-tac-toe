@@ -369,7 +369,7 @@ function addMark(event) {
 
     let mark = '';
     let color = '';
-    if (player1Turn) {
+    if (gameController.isPlayer1Turn()) {
         mark = player1.getMark();
         color = 'red';
     } else {
@@ -381,16 +381,17 @@ function addMark(event) {
     cell.textContent = mark;
     cell.style.color = color;
 
+    const lastCell = gameController.getLastCell();
     if (lastCell !== null) {
         lastCell.classList.remove('highlight');
     }
     cell.classList.add('highlight');
 
-    if (_isGameOver(row, column, mark)) {
-        _endGame(row, column, mark);
+    if (gameController.isGameOver(row, column, mark)) {
+        gameController.endGame(row, column, mark);
     }
 
     // Set up the next turn
-    lastCell = cell;
-    player1Turn = !player1Turn;
+    gameController.setLastCell(cell);
+    gameController.swapTurn();
 }
