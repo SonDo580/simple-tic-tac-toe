@@ -131,7 +131,10 @@ function endGame() {
         }
     }
 
-    
+    // colorHorizontal(...arguments);
+    // colorVertical(...arguments);
+    // colorNorthWest_SouthEast(...arguments);
+    // colorNorthEast_SouthWest(...arguments);
 }
 
 function colorHorizontal(row, column, mark) {
@@ -150,6 +153,67 @@ function colorHorizontal(row, column, mark) {
             break;
         }
         gameBoard.getCell(row, currentColumn).classList.add('highlight');
+    }
+}
+
+function colorVertical(row, column, mark) {
+    let currentRow = row;
+
+    while (--currentRow >= 0) {
+        if (gameBoard.getCellContent(currentRow, column) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, column).classList.add('highlight');
+    }
+
+    currentRow = row;
+    while (++currentRow < SIDE) {
+        if (gameBoard.getCellContent(currentRow, column) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, column).classList.add('highlight');
+    }
+}
+
+function colorNorthWest_SouthEast(row, column, mark) {
+    let currentRow = row;
+    let currentColumn = column;
+
+    while (--currentRow >= 0 && --currentColumn >= 0) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
+    }
+
+    currentRow = row;
+    currentColumn = column;
+    while (++currentRow < SIDE && ++currentColumn < SIDE) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
+    }
+}
+
+function colorNorthEast_SouthWest(row, column, mark) {
+    let currentRow = row;
+    let currentColumn = column;
+
+    while (--currentRow >= 0 && ++currentColumn < SIDE) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
+    }
+
+    currentRow = row;
+    currentColumn = column;
+    while (++currentRow < SIDE && --currentColumn >= 0) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
+            break;
+        }
+        gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
     }
 }
 
