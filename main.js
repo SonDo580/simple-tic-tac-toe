@@ -271,32 +271,6 @@ const checker = (() => {
     return { checkAllDirections };
 })();
 
-const player = (name, mark) => {
-    const getName = () => name;
-    const getMark = () => mark;
-
-    const renderPlayer = () => {
-        const playerDiv = document.createElement('div');
-        playerDiv.textContent = `${name}: ${mark}`;
-
-        return playerDiv;
-    };
-
-    return { getName, getMark, renderPlayer };
-};
-
-const player1 = player('Shadow', 'X');
-const player2 = player('Sonic', 'O');
-
-const playersDiv = document.querySelector('#players');
-playersDiv.appendChild(player1.renderPlayer());
-playersDiv.appendChild(player2.renderPlayer());
-
-const resetButton = document.querySelector('#reset');
-resetButton.addEventListener('click', gameController.resetGame);
-
-gameBoard.renderBoard();
-
 const gameController = (() => {
     let player1Turn = true;     // player1 will go first
     let lastCell = null;
@@ -355,6 +329,33 @@ const gameController = (() => {
         isPlayer1Turn, swapTurn, getLastCell, setLastCell
     };
 })();
+
+const player = (name, mark) => {
+    const getName = () => name;
+    const getMark = () => mark;
+
+    const renderPlayer = () => {
+        const playerDiv = document.createElement('div');
+        playerDiv.textContent = `${name}: ${mark}`;
+
+        return playerDiv;
+    };
+
+    return { getName, getMark, renderPlayer };
+};
+
+
+const player1 = player('Shadow', 'X');
+const player2 = player('Sonic', 'O');
+
+const playersDiv = document.querySelector('#players');
+playersDiv.appendChild(player1.renderPlayer());
+playersDiv.appendChild(player2.renderPlayer());
+
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', gameController.resetGame);
+
+gameBoard.renderBoard();
 
 
 function addMark(event) {
