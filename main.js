@@ -10,10 +10,6 @@ const gameBoard = (() => {
         board.push(row);
     }
 
-    const getBoard = () => {
-        return board;
-    }
-
     const renderBoard = () => {
         const gameBoardDiv = document.querySelector('#gameBoard');
 
@@ -47,7 +43,7 @@ const gameBoard = (() => {
         return board[row][column];
     }
 
-    return { getBoard, renderBoard, setCellContent, getCellContent };
+    return { renderBoard, setCellContent, getCellContent };
 })();
 
 gameBoard.renderBoard();
