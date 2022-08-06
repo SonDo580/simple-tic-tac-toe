@@ -106,8 +106,6 @@ function addMark(event) {
     }
     cell.classList.add('highlight');
 
-
-
     // Set up the next turn
     lastCell = cell;
     player1Turn = !player1Turn;
@@ -123,6 +121,12 @@ function isGameOver() {
     }
 
     return false;
+}
+
+function endGame() {
+    const markNumber = checkAllDirections(...arguments);
+
+    
 }
 
 function checkAllDirections() {
