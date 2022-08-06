@@ -126,10 +126,10 @@ function isGameOver() {
 }
 
 function endGame() {
-    const markNumber = checkAllDirections(...arguments);
+    const markNumberObject = checkAllDirections(...arguments);
 
-    for (let line in markNumber) {
-        if (markNumber[line] >= 5) {
+    for (let line in markNumberObject) {
+        if (markNumberObject[line] >= 5) {
             switch (line) {
                 case 'horizontal':
                     colorHorizontal(...arguments);
@@ -159,6 +159,10 @@ function stopAddingMark() {
         cell.removeEventListener('click', addMark);
     }
 }
+
+// function colorWinningLines() {
+
+// }
 
 function colorHorizontal(row, column, mark) {
     let currentColumn = column;
@@ -241,14 +245,14 @@ function colorNorthEast_SouthWest(row, column, mark) {
 }
 
 function checkAllDirections() {
-    const markNumber = {
+    const markNumberObject = {
         horizontal : checkHorizontal(...arguments),
         vertical: checkVertical(...arguments),
         northwest_southeast: checkNorthWest_SouthEast(...arguments),
         northeast_southwest: checkNorthEast_SouthWest(...arguments)
     };
 
-    return markNumber;
+    return markNumberObject;
 }
 
 function checkHorizontal(row, column, mark) {
