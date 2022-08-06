@@ -1,14 +1,21 @@
 const SIDE = 10;    // the number of squares per side of the board
 
 const gameBoard = (() => {
-    const board = [];
-    for (let i = 0; i < SIDE; i++) {
-        const row = [];
-        for (let j = 0; j < SIDE; j++) {
-            row.push('');
+    const __createBoard = () => {
+        const board = [];
+
+        for (let i = 0; i < SIDE; i++) {
+            const row = [];
+            for (let j = 0; j < SIDE; j++) {
+                row.push('');
+            }
+            board.push(row);
         }
-        board.push(row);
+
+        return board;
     }
+
+    let board = __createBoard();
 
     const renderBoard = () => {
         const gameBoardDiv = document.querySelector('#gameBoard');
@@ -41,6 +48,10 @@ const gameBoard = (() => {
         return board[row][column];
     }
 
+    // const resetBoard = () => {
+
+    // }
+
     return { renderBoard, getCell, setCellContent, getCellContent };
 })();
 
@@ -71,9 +82,14 @@ playersDiv.appendChild(player2.renderPlayer());
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', resetGame);
 
-
 let player1Turn = true;     // player1 will go first
-let lastCell = null;       
+let lastCell = null;
+
+// function resetGame() {
+
+//     player1Turn = true;
+//     lastCell = null;
+// }
 
 function addMark(event) {
     const cell = event.target;
@@ -134,7 +150,7 @@ function endGame() {
 
 function stopAddingMark() {
     const cells = document.querySelectorAll('.cell');
-    
+
     for (let cell of cells) {
         cell.removeEventListener('click', addMark);
     }
@@ -245,7 +261,7 @@ function colorNorthEast_SouthWest(row, column, mark) {
 
 function checkAllDirections() {
     const markNumberObject = {
-        horizontal : checkHorizontal(...arguments),
+        horizontal: checkHorizontal(...arguments),
         vertical: checkVertical(...arguments),
         northwest_southeast: checkNorthWest_SouthEast(...arguments),
         northeast_southwest: checkNorthEast_SouthWest(...arguments)
