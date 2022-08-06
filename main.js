@@ -113,7 +113,7 @@ function addMark(event) {
     player1Turn = !player1Turn;
 }
 
-function isGameOver(row, column, board, mark) {
+function isGameOver(row, column, mark) {
     const markNumber = checkAllDirections(...arguments);
 
     for (let key in markNumber) {
@@ -125,7 +125,7 @@ function isGameOver(row, column, board, mark) {
     return false;
 }
 
-function checkAllDirections(row, column, board, mark) {
+function checkAllDirections(row, column, mark) {
     const markNumber = {
         horizontal : checkHorizontal(...arguments),
         vertical: checkVertical(...arguments),
@@ -136,12 +136,12 @@ function checkAllDirections(row, column, board, mark) {
     return markNumber;
 }
 
-function checkHorizontal(row, column, board, mark) {
+function checkHorizontal(row, column, mark) {
     let markNumber = 1;
     let currentColumn = column;
 
     while (--currentColumn >= 0) {
-        if (board[row][currentColumn] !== mark) {
+        if (gameBoard.getCell(row, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -149,7 +149,7 @@ function checkHorizontal(row, column, board, mark) {
 
     currentColumn = column;
     while (++currentColumn < SIDE) {
-        if (board[row][currentColumn] !== mark) {
+        if (gameBoard.getCell(row, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -158,12 +158,12 @@ function checkHorizontal(row, column, board, mark) {
     return markNumber;
 }
 
-function checkVertical(row, column, board, mark) {
+function checkVertical(row, column, mark) {
     let markNumber = 1;
     let currentRow = row;
 
     while (--currentRow >= 0) {
-        if (board[currentRow][column] !== mark) {
+        if (gameBoard.getCell(currentRow, column) !== mark) {
             break;
         }
         markNumber++;
@@ -171,7 +171,7 @@ function checkVertical(row, column, board, mark) {
 
     currentRow = row;
     while (++currentRow < SIDE) {
-        if (board[currentRow][column] !== mark) {
+        if (gameBoard.getCell(currentRow, column) !== mark) {
             break;
         }
         markNumber++;
@@ -180,13 +180,13 @@ function checkVertical(row, column, board, mark) {
     return markNumber;
 }
 
-function checkNorthWest_SouthEast(row, column, board, mark) {
+function checkNorthWest_SouthEast(row, column, mark) {
     let markNumber = 1;
     let currentRow = row;
     let currentColumn = column;
 
     while (--currentRow >= 0 && --currentColumn >= 0) {
-        if (board[currentRow][currentColumn] !== mark) {
+        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -195,7 +195,7 @@ function checkNorthWest_SouthEast(row, column, board, mark) {
     currentRow = row;
     currentColumn = column;
     while (++currentRow < SIDE && ++currentColumn < SIDE) {
-        if (board[currentRow][currentColumn] !== mark) {
+        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -204,13 +204,13 @@ function checkNorthWest_SouthEast(row, column, board, mark) {
     return markNumber;
 }
 
-function checkNorthEast_SouthWest(row, column, board, mark) {
+function checkNorthEast_SouthWest(row, column, mark) {
     let markNumber = 1;
     let currentRow = row;
     let currentColumn = column;
 
     while (--currentRow >= 0 && ++currentColumn < SIDE) {
-        if (board[currentRow][currentColumn] !== mark) {
+        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -219,7 +219,7 @@ function checkNorthEast_SouthWest(row, column, board, mark) {
     currentRow = row;
     currentColumn = column;
     while (++currentRow < SIDE && --currentColumn >= 0) {
-        if (board[currentRow][currentColumn] !== mark) {
+        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
