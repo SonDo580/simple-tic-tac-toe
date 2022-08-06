@@ -39,15 +39,15 @@ const gameBoard = (() => {
         }
     };
 
-    const setCell = (row, column, mark) => {
+    const setCellContent = (row, column, mark) => {
         board[row][column] = mark;
     }
 
-    const getCell = (row, column) => {
+    const getCellContent = (row, column) => {
         return board[row][column];
     }
 
-    return { getBoard, renderBoard, setCell, getCell };
+    return { getBoard, renderBoard, setCellContent, getCellContent };
 })();
 
 gameBoard.renderBoard();
@@ -97,7 +97,7 @@ function addMark(event) {
         color = 'blue';
     }
 
-    gameBoard.setCell(row, column, mark);
+    gameBoard.setCellContent(row, column, mark);
     cell.textContent = mark;
     cell.style.color = color;
 
@@ -136,7 +136,28 @@ function endGame() {
             arrayHighlight.push(markNumber[key]);
         }
     }
+
+    
 }
+
+// function colorHorizontal(row, column, mark) {
+//     let currentColumn = column;
+
+//     while (--currentColumn >= 0) {
+//         if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+//             break;
+//         }
+        
+//     }
+
+//     currentColumn = column;
+//     while (++currentColumn < SIDE) {
+//         if (gameBoard.getCellContent(row, currentColumn) !== mark) {
+//             break;
+//         }
+        
+//     }
+// }
 
 function checkAllDirections() {
     const markNumber = {
@@ -154,7 +175,7 @@ function checkHorizontal(row, column, mark) {
     let currentColumn = column;
 
     while (--currentColumn >= 0) {
-        if (gameBoard.getCell(row, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -162,7 +183,7 @@ function checkHorizontal(row, column, mark) {
 
     currentColumn = column;
     while (++currentColumn < SIDE) {
-        if (gameBoard.getCell(row, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(row, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -176,7 +197,7 @@ function checkVertical(row, column, mark) {
     let currentRow = row;
 
     while (--currentRow >= 0) {
-        if (gameBoard.getCell(currentRow, column) !== mark) {
+        if (gameBoard.getCellContent(currentRow, column) !== mark) {
             break;
         }
         markNumber++;
@@ -184,7 +205,7 @@ function checkVertical(row, column, mark) {
 
     currentRow = row;
     while (++currentRow < SIDE) {
-        if (gameBoard.getCell(currentRow, column) !== mark) {
+        if (gameBoard.getCellContent(currentRow, column) !== mark) {
             break;
         }
         markNumber++;
@@ -199,7 +220,7 @@ function checkNorthWest_SouthEast(row, column, mark) {
     let currentColumn = column;
 
     while (--currentRow >= 0 && --currentColumn >= 0) {
-        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -208,7 +229,7 @@ function checkNorthWest_SouthEast(row, column, mark) {
     currentRow = row;
     currentColumn = column;
     while (++currentRow < SIDE && ++currentColumn < SIDE) {
-        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -223,7 +244,7 @@ function checkNorthEast_SouthWest(row, column, mark) {
     let currentColumn = column;
 
     while (--currentRow >= 0 && ++currentColumn < SIDE) {
-        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
@@ -232,7 +253,7 @@ function checkNorthEast_SouthWest(row, column, mark) {
     currentRow = row;
     currentColumn = column;
     while (++currentRow < SIDE && --currentColumn >= 0) {
-        if (gameBoard.getCell(currentRow, currentColumn) !== mark) {
+        if (gameBoard.getCellContent(currentRow, currentColumn) !== mark) {
             break;
         }
         markNumber++;
