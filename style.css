@@ -37,3 +37,20 @@
 .highlight {
     background-color: yellow;
 }
+
+#restart {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: dodgerblue;
+    color: white;
+    border: dodgerblue;
+    border-radius: 0 0 5px 5px;
+    transition: all .3s;
+}
+
+#restart:hover {
+    background-color: darkblue;
+    cursor: pointer;
+}
