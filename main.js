@@ -88,13 +88,13 @@ const gameController = (() => {
     let player1Turn = true;     // player1 will go first
     let lastCell = null;
 
-    function resetGame() {
+    const resetGame = () => {
         gameBoard.resetBoard();
         player1Turn = true;
         lastCell = null;
     }
     
-    function addMark(event) {
+    const addMark = (event) => {
         const cell = event.target;
         if (cell.textContent !== '') {
             return;
@@ -131,7 +131,7 @@ const gameController = (() => {
         player1Turn = !player1Turn;
     }
     
-    function isGameOver() {
+    const isGameOver = () => {
         const markNumber = checker.checkAllDirections(...arguments);
     
         for (let key in markNumber) {
@@ -144,13 +144,13 @@ const gameController = (() => {
         // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
     
-    function endGame() {
+    const endGame = () => {
         const markNumberObject = checker.checkAllDirections(...arguments);
         highlighter.colorWinningLines(markNumberObject, ...arguments);
         stopAddingMark(); // Player will have to click the restart button to play again.
     }
     
-    function stopAddingMark() {
+    const stopAddingMark = () => {
         const cells = document.querySelectorAll('.cell');
     
         for (let cell of cells) {
