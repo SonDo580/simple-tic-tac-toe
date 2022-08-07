@@ -13,7 +13,7 @@ const gameBoard = (() => {
         }
 
         return board;
-    }
+    };
 
     let board = _createBoard();
 
@@ -39,20 +39,20 @@ const gameBoard = (() => {
 
     const getCell = (row, column) => {
         return document.querySelector(`[data-row="${row}"][data-column="${column}"]`);
-    }
+    };
 
     const setCellContent = (row, column, mark) => {
         board[row][column] = mark;
-    }
+    };
 
     const getCellContent = (row, column) => {
         return board[row][column];
-    }
+    };
 
     const resetBoard = () => {
         board = _createBoard();
         renderBoard();
-    }
+    };
 
     return { renderBoard, getCell, setCellContent, getCellContent, resetBoard };
 })();
@@ -98,7 +98,7 @@ const highlighter = (() => {
             }
             gameBoard.getCell(row, currentColumn).classList.add('highlight');
         }
-    }
+    };
 
     const _colorVertical = (row, column, mark) => {
         let currentRow = row;
@@ -117,7 +117,7 @@ const highlighter = (() => {
             }
             gameBoard.getCell(currentRow, column).classList.add('highlight');
         }
-    }
+    };
 
     const _colorNorthWest_SouthEast = (row, column, mark) => {
         let currentRow = row;
@@ -138,7 +138,7 @@ const highlighter = (() => {
             }
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
-    }
+    };
 
     const _colorNorthEast_SouthWest = (row, column, mark) => {
         let currentRow = row;
@@ -159,7 +159,7 @@ const highlighter = (() => {
             }
             gameBoard.getCell(currentRow, currentColumn).classList.add('highlight');
         }
-    }
+    };
 
     return { colorWinningLines };
 })();
@@ -196,7 +196,7 @@ const checker = (() => {
         }
 
         return markNumber;
-    }
+    };
 
     const _checkVertical = (row, column, mark) => {
         let markNumber = 1;
@@ -218,7 +218,7 @@ const checker = (() => {
         }
 
         return markNumber;
-    }
+    };
 
     const _checkNorthWest_SouthEast = (row, column, mark) => {
         let markNumber = 1;
@@ -242,7 +242,7 @@ const checker = (() => {
         }
 
         return markNumber;
-    }
+    };
 
     const _checkNorthEast_SouthWest = (row, column, mark) => {
         let markNumber = 1;
@@ -266,7 +266,7 @@ const checker = (() => {
         }
 
         return markNumber;
-    }
+    };
 
     return { checkAllDirections };
 })();
@@ -279,7 +279,7 @@ const gameController = (() => {
         gameBoard.resetBoard();
         player1Turn = true;
         lastCell = null;
-    }
+    };
 
     function isGameOver () {
         const markNumber = checker.checkAllDirections(...arguments);
@@ -306,7 +306,7 @@ const gameController = (() => {
         for (let cell of cells) {
             cell.removeEventListener('click', addMark);
         }
-    }
+    };
 
     const isPlayer1Turn = () => {
         return player1Turn;
@@ -318,11 +318,11 @@ const gameController = (() => {
 
     const getLastCell = () => {
         return lastCell;
-    }
+    };
 
     const setLastCell = (cell) => {
         lastCell = cell;
-    }
+    };
 
     return {
         resetGame, isGameOver, endGame,
