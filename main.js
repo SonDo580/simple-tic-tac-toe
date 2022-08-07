@@ -58,7 +58,7 @@ const gameBoard = (() => {
 })();
 
 const highlighter = (() => {
-    const colorWinningLines = (markNumberObject, ...arguments) => {
+    function colorWinningLines(markNumberObject, ...arguments) {
         for (let line in markNumberObject) {
             if (markNumberObject[line] >= 5) {
                 switch (line) {
@@ -165,7 +165,7 @@ const highlighter = (() => {
 })();
 
 const checker = (() => {
-    const checkAllDirections = () => {
+    function checkAllDirections() {
         const markNumberObject = {
             horizontal: _checkHorizontal(...arguments),
             vertical: _checkVertical(...arguments),
@@ -281,7 +281,7 @@ const gameController = (() => {
         lastCell = null;
     }
 
-    const isGameOver = () => {
+    function isGameOver () {
         const markNumber = checker.checkAllDirections(...arguments);
 
         for (let key in markNumber) {
@@ -294,7 +294,7 @@ const gameController = (() => {
         // There's another case: a draw. In that case, no lines are gonna be highlighted.
     }
 
-    const endGame = () => {
+    function endGame () {
         const markNumberObject = checker.checkAllDirections(...arguments);
         highlighter.colorWinningLines(markNumberObject, ...arguments);
         _stopAddingMark(); // Player will have to click the restart button to play again.
