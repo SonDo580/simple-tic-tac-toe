@@ -6,7 +6,7 @@
 
 # Live Preview
 
-https://sondo580.github.io/tic-tac-toe/
+https://sondo580.github.io/simple-tic-tac-toe/
 
 # How to play
 
